@@ -16,4 +16,8 @@
   .background-light900_dark200 {
     @apply bg-light-900 dark:bg-dark-200
   }
+
+  .h2-bold {
+    @apply text-2xl font-semibold leading-8 
+  }
 }

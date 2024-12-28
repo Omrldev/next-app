@@ -2,4 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --radius: 0.5rem}
+}
 
+@layer utilities {
+ 
+  .flex-between {
+    @apply flex justify-between items-center
+  }
+
+  .background-light900_dark200 {
+    @apply bg-light-900 dark:bg-dark-200
+  }
+}

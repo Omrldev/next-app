@@ -49,10 +49,16 @@ export default {
   			]
   		},
   		borderRadius: {
+			'1.5': '6px',
+			"2": '8px',
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		backgroundImage: {
+			'auth-light': 'url("/images/auth-light.png")',
+			'auth-dark': 'url("/images/auth-dark.png")'
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

@@ -9,15 +9,67 @@
 
 @layer utilities {
  
+  /* FLEX */
   .flex-between {
     @apply flex justify-between items-center
   }
 
+  .flex-center {
+    @apply flex justify-center items-center
+  }
+
+  /* BACKGROUND */
   .background-light900_dark200 {
     @apply bg-light-900 dark:bg-dark-200
   }
 
+  .background-light800_dark200 {
+    @apply bg-light-800 dark:bg-dark-200
+  }
+
+  .background-dark400_light900 {
+    @apply dark:bg-dark-400 bg-light-900 !important;
+  }
+
+  /* H */
   .h2-bold {
     @apply text-2xl font-semibold leading-8 
+  }
+
+  /* BORDER */
+  .light-border {
+    @apply border-light-800 dark:border-dark-300
+  }
+
+    /* TEXT */
+  .text-dark100_light900 {
+    @apply text-dark-100 dark:text-light-900
+  }
+
+  .text-dark500_light400 {
+    @apply text-dark-500 dark:text-light-400
+  }
+
+  .text-dark200_light800 {
+    @apply text-dark-200 dark:text-light-800 !important;
+  }
+
+    /* PARAGRAPH */
+  .paragraph-regular {
+    @apply text-[16px] font-normal leading-[22.4px];
+  }
+
+  /* BODY */
+  .body-medium {
+    @apply text-[14px] font-medium leading-[18.2px];
+  }
+
+  /* SHADOW */
+  .shadow-light100_dark100 {
+    @apply shadow-light-100 dark:shadow-dark-100;
+  }
+
+  .invert-colors {
+    @apply invert dark:invert-0;
   }
 }

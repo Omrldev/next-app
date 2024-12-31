@@ -1,12 +1,36 @@
+'use client'
+
 import Image from 'next/image'
 import React from 'react'
+import { toast } from '@/hooks/use-toast'
+import { ToastAction } from '@radix-ui/react-toast'
+import { Button } from '../ui/button'
 
 const SocialAuthForms = () => {
     const buttonClass = 'background-dark400_light900 body-medium text-dark200_light800 min-h-12 px-4 py-3.5 rounded-2 flex-1 flex-center'
+
+    const handleSignIn = async (provider: "github" | "google") => {
+      try {
+        throw new Error ('Failed')
+        
+      } catch (error) {
+        console.log(error)
+
+        toast({
+          variant: 'destructive',
+          title: 'Uh oh! Something went wrong.',
+          description: 
+            error instanceof Error 
+            ? error.message 
+            : "There was a problem with your request.",
+          action: <ToastAction className='border rounded-md px-3 py-1 hover:border-none' altText='Try again'>Try again</ToastAction>     
+        })
+      }
+    }
     
   return (
     <div className='mt-10 flex flex-wrap gap-2.5'>
-        <button className={buttonClass}>
+        <Button className={buttonClass} onClick={() => handleSignIn('github')}>
             <Image 
             src={'/icons/github.svg'}
             alt='git hub'
@@ -15,9 +39,9 @@ const SocialAuthForms = () => {
             className='invert-colors mr-2.5 object-contain'
             />
             <span>Log in with GitHub</span>
-        </button>
+        </Button>
 
-        <button className={buttonClass}>
+        <Button className={buttonClass}>
             <Image 
             src={'/icons/google.svg'}
             alt='google'
@@ -26,7 +50,7 @@ const SocialAuthForms = () => {
             className='mr-2.5 object-contain'
             />
             <span>Log in with Google</span>
-        </button>
+        </Button>
     </div>
   )
 }

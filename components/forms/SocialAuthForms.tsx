@@ -5,13 +5,19 @@ import React from 'react'
 import { toast } from '@/hooks/use-toast'
 import { ToastAction } from '@radix-ui/react-toast'
 import { Button } from '../ui/button'
+import { signIn } from 'next-auth/react'
+import ROUTES from '@/constants/route'
 
 const SocialAuthForms = () => {
     const buttonClass = 'background-dark400_light900 body-medium text-dark200_light800 min-h-12 px-4 py-3.5 rounded-2 flex-1 flex-center'
 
     const handleSignIn = async (provider: "github" | "google") => {
       try {
-        throw new Error ('Failed')
+        // How we gonna do the funcionality
+        await signIn(provider, {
+          callbackUrl: ROUTES.HOME,
+          redirect: false
+        })
         
       } catch (error) {
         console.log(error)

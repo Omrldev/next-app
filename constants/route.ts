@@ -1,8 +1,8 @@
 
-const Route = {
-    Home: '/',
-    Sign_in: '/sign-in',
-    Sign_up: '/sign-up'
+const ROUTES = {
+    HOME: '/',
+    SIGN_IN: '/sign-in',
+    SIGN_UP: '/sign-up'
 }
 
-export default Route;
+export default ROUTES;

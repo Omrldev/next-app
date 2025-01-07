@@ -1,8 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   DefaultValues,
   FieldValues,
@@ -10,12 +8,14 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
+
 import { z, ZodType } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,12 +23,19 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import ROUTES from "@/constants/route";
-import { toast } from "@/hooks/use-toast";
+import Link from "next/link";
+
+// Define the Schema
+const formSchema = z.object({
+  username: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+});
 
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>;
   defaultValues: T;
-  onSubmit: (data: T) => Promise<ActionResponse>;
+  onSubmit: (data: T) => Promise<{ success: boolean }>;
   formType: "SIGN_IN" | "SIGN_UP";
 }
 
@@ -38,43 +45,20 @@ const AuthForm = <T extends FieldValues>({
   formType,
   onSubmit,
 }: AuthFormProps<T>) => {
-  const router = useRouter();
-
+  // 1. Define your form.
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
-  const handleSubmit: SubmitHandler<T> = async (data) => {
-    const result = (await onSubmit(data)) as ActionResponse;
-
-    if (result?.success) {
-      toast({
-        title: "Success",
-        description:
-          formType === "SIGN_IN"
-            ? "Signed in successfully"
-            : "Signed up successfully",
-      });
-
-      router.push(ROUTES.HOME);
-    } else {
-      toast({
-        title: `Error ${result?.status}`,
-        description: result?.error?.message,
-        variant: "destructive",
-      });
-    }
-  };
+  // 2. Define a submit handler.
+  const handleSubmit: SubmitHandler<T> = async () => {};
 
   const buttonText = formType === "SIGN_IN" ? "Sign In" : "Sign Up";
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(handleSubmit)}
-        className="mt-10 space-y-6"
-      >
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="mt-10 space-y-8">
         {Object.keys(defaultValues).map((field) => (
           <FormField
             key={field}

@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
+  // FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,11 +26,11 @@ import ROUTES from "@/constants/route";
 import Link from "next/link";
 
 // Define the Schema
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
+// const formSchema = z.object({
+//   username: z.string().min(2, {
+//     message: "Username must be at least 2 characters.",
+//   }),
+// });
 
 interface AuthFormProps<T extends FieldValues> {
   schema: ZodType<T>;

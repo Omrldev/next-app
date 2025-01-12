@@ -204,6 +204,10 @@
     @apply invert dark:invert-0;
   }
 
+  .invert-colores {
+    @apply inve
+  }
+
   .shadow-light100_dark100 {
     @apply shadow-light-100 dark:shadow-dark-100;
   }

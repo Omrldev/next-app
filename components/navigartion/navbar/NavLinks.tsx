@@ -19,15 +19,37 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
           (pathname.includes(item.route) && item.route.length > 1) ||
           pathname === item.route;
 
-          if (item.route === "/profile") {
-            if (userId) item.route = `${item.route}/${userId}`;
-            else return null;
-          }
+        if (item.route === "/profile") {
+          if (userId) item.route = `${item.route}/${userId}`;
+          else return null;
+        }
 
         const linkComponent = (
-          <Link href={item.route} key={item.label} className={cn(isActive ? 'primary-gradient rounded-lg text-light900' : 'text-dark300_light900 bg-transparent', "flex justify-start items-center gap-4 p-4")}>
-            <Image src={item.imgURL} alt={item.label} width={20} height={20} className={cn("invert-colors",{"invert-color" : !isActive})} />
-            <p className={cn(isActive ? 'font-bold' : 'font-light', !isMobileNav && 'max-lg:hidden')}>{item.label}</p>
+          <Link
+            href={item.route}
+            key={item.label}
+            className={cn(
+              isActive
+                ? "primary-gradient rounded-lg text-light900"
+                : "text-dark300_light900 bg-transparent",
+              "flex justify-start items-center gap-4 p-4"
+            )}
+          >
+            <Image
+              src={item.imgURL}
+              alt={item.label}
+              width={20}
+              height={20}
+              className={cn("invert-colors", { "invert-color": !isActive })}
+            />
+            <p
+              className={cn(
+                isActive ? "font-bold" : "font-light",
+                !isMobileNav && "max-lg:hidden"
+              )}
+            >
+              {item.label}
+            </p>
           </Link>
         );
 
@@ -35,9 +57,9 @@ const NavLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
           <SheetClose asChild key={item.route}>
             {linkComponent}
           </SheetClose>
-        ): (<React.Fragment key={item.route}>
-          {linkComponent}
-        </React.Fragment>)
+        ) : (
+          <React.Fragment key={item.route}>{linkComponent}</React.Fragment>
+        );
       })}
     </>
   );

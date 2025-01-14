@@ -1,5 +1,6 @@
 import LeftSideNav from "@/components/navigartion/LeftSideNav";
 import Navbar from "@/components/navigartion/navbar";
+import RightSidebar from "@/components/navigartion/RightSidebar";
 import React from "react";
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
@@ -13,7 +14,11 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
         <section className="flex flex-col min-h-screen flex-1">
           <div className="w-full max-w-5xl mx-auto">{children}</div>
         </section>
+
+        <RightSidebar />
       </div>
+
+
     </main>
   );
 };

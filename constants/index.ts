@@ -36,3 +36,11 @@ export const sidebarLinks = [
       label: "Ask a question",
     },
   ];
+
+  export const hotQuestions = [
+    { _id: "1", title: "How to create a custom hook in React?" },
+    { _id: "2", title: "How to use React Query?" },
+    { _id: "3", title: "How to use Redux?" },
+    { _id: "4", title: "How to use React Router?" },
+    { _id: "5", title: "How to use React Context?" },
+  ];

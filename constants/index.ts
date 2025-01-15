@@ -44,3 +44,11 @@ export const sidebarLinks = [
     { _id: "4", title: "How to use React Router?" },
     { _id: "5", title: "How to use React Context?" },
   ];
+
+  export const popularTags = [
+    { _id: "1", name: "react", questions: 100 },
+    { _id: "2", name: "javascript", questions: 200 },
+    { _id: "3", name: "typescript", questions: 150 },
+    { _id: "4", name: "nextjs", questions: 50 },
+    // { _id: "5", name: "react-query", questions: 75 },
+  ]

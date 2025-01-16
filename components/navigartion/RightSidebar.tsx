@@ -6,7 +6,7 @@ import TagCard from "../cards/TagCard";
 
 const RightSidebar = () => {
   return (
-    <section className="min-h-screen w-[420px] sticky top-0 right-0 shadow-md p-6">
+    <section className="min-h-screen w-[420px] sticky top-0 right-0 shadow-md p-6 max-xl:hidden">
       <div className="w-full">
         <h3>Tops Questions</h3>
 

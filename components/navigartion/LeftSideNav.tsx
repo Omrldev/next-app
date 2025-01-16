@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const LeftSideNav = () => {
   return (
-    <section className="sticky left-0 top-0 shadow-md custom-scrollbar h-svh flex flex-col justify-between pb-28">
+    <section className="sticky left-0 top-0 shadow-md custom-scrollbar h-svh flex flex-col justify-between pb-28 max-md:hidden">
       <div className="flex flex-1 flex-col justify-between">
         <div>
           <NavLinks />

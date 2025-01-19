@@ -1,9 +1,10 @@
 "use client";
 
-import { useSearchParams} from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams} from "next/navigation";
+import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import Image from "next/image";
+import { fromUrlQuery } from "@/lib/url";
 
 interface Props {
   route: string;
@@ -13,11 +14,24 @@ interface Props {
 }
 
 const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
-    const searchParmas = useSearchParams()
-    // get the query if doesn't exist set it empty
-    const query = searchParmas.get("query") || "";
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const query = searchParams.get("query") || ""
 
-   const [searchQuery, setSearchQuery] = useState(query)
+  const [queryString, setQueryString] = useState(query)
+
+  useEffect(() => {
+    if (queryString) {
+      const newUrl = fromUrlQuery({
+        params: searchParams.toString(),
+        key: "query",
+        value: queryString
+      })
+
+      router.push(newUrl, { scroll: false})
+    }
+  }, [queryString, router, route, searchParams])
+  
 
   return (
     <div className="flex min-h-[56px] justify-start items-center bg-light-700 rounded-xl px-5">
@@ -25,9 +39,8 @@ const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
 
       <Input
         src={route}
-        value={searchQuery}
-        // e => event and this is how we change the value
-        onChange={(e) => setSearchQuery(e.target.value)}
+        value={queryString}
+        onChange={(e) => setQueryString(e.target.value)}
         placeholder={placeholder}
         className="border-none shadow-none focus-visible:ring-transparent"
       />

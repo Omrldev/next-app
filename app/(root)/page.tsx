@@ -5,7 +5,45 @@ import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/route";
 import Link from "next/link";
 
-const Home = async () => {
+const questions = [
+  {
+    _id: "1",
+    title: "How to learn React?",
+    description: "I want to learn React, can anyone help me?",
+    tags: [
+      { _id: "1", name: "React" },
+      { _id: "2", name: "JavaScript" },
+    ],
+    author: { _id: "1", name: "John Doe" },
+    upvotes: 10,
+    answers: 5,
+    views: 100,
+    createdAt: new Date(),
+  },
+  {
+    _id: "2",
+    title: "How to learn JavaScript?",
+    description: "I want to learn JavaScript, can anyone help me?",
+    tags: [
+      { _id: "1", name: "React" },
+      { _id: "2", name: "JavaScript" },
+    ],
+    author: { _id: "1", name: "John Doe" },
+    upvotes: 10,
+    answers: 5,
+    views: 100,
+    createdAt: new Date(),
+  },
+] 
+
+interface PropSearchParams {
+  searchParams: Promise<{[ key: string]: string}>
+}
+
+const Home = async ({ searchParams}: PropSearchParams) => {
+  const {query = ''} = await searchParams
+  const filterQuestions = questions.filter((question) => (question.title.toLowerCase().includes(query?.toLowerCase())))
+
   return (
     <>
       <section className="w-full flex justify-between flex-col-reverse lg:flex-row gap-3">
@@ -18,7 +56,6 @@ const Home = async () => {
         </Button>
       </section>
       <section className="mt-11">
-        {/* create a component to reuse it */}
         <LocalSearch
           route="/"
           imgSrc="/icons/search.svg"
@@ -28,10 +65,9 @@ const Home = async () => {
       </section>
       home filter
       <div className="mt-11">
-        <p>question card 1</p>
-        <p>question card 1</p>
-        <p>question card 1</p>
-        <p>question card 1</p>
+        {filterQuestions.map((question) => (
+          <Link key={question._id} href={""} className="flex flex-col">{question.title}</Link>
+        ))}
       </div>
     </>
   );

@@ -52,3 +52,10 @@ export const sidebarLinks = [
     { _id: "4", name: "nextjs", questions: 50 },
     // { _id: "5", name: "react-query", questions: 75 },
   ]
+
+  export const homeFilters = [
+    {name: 'Newest', value: 'newest'},
+    {name: 'Popular', value: 'popular'},
+    {name: 'Unanswered', value: 'unanswered'},
+    {name: 'Recomended', value: 'recomended'}
+  ]

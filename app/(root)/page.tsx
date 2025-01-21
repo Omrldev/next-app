@@ -1,5 +1,6 @@
 
 
+import HomeFilter from "@/components/filter/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/route";
@@ -63,7 +64,9 @@ const Home = async ({ searchParams}: PropSearchParams) => {
           otherClasses="flex-1"
         />
       </section>
-      home filter
+
+      <HomeFilter />
+      
       <div className="mt-11">
         {filterQuestions.map((question) => (
           <Link key={question._id} href={""} className="flex flex-col">{question.title}</Link>

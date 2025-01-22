@@ -12,7 +12,7 @@ interface PropsUrlRemove {
   keysToRemove: string[];
 }
 
-// update the URL
+// update the URL params
 export const fromUrlQuery = ({ params, key, value }: UrlQuery) => {
   const currentUrl = qs.parse(params);
 
@@ -24,6 +24,7 @@ export const fromUrlQuery = ({ params, key, value }: UrlQuery) => {
   });
 };
 
+// remove the URL params
 export const removeUrlQuery = ({ params, keysToRemove }: PropsUrlRemove) => {
   const currentUrl = qs.parse(params);
 

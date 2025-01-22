@@ -2,7 +2,7 @@ import React from 'react'
 
 const Tags = () => {
   return (
-    <div>page</div>
+    <div>Tags</div>
   )
 }
 
